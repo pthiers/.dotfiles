@@ -59,8 +59,7 @@ template = "  {{ .Full }} "
 
 [[blocks.segments]]
 type = "go"
-style = "powerline"
-powerline_symbol = ""
+style = "plain"
 foreground = "#7FD5EA"
 background = "transparent"
 template = " ‭🦫 {{ .Full }} "
