@@ -1,107 +1,103 @@
-#:schema https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
-
-version = 2
-final_space = true
 console_title_template = '{{ .Shell }} in {{ .Folder }}'
-
-[[blocks]]
-type = 'prompt'
-alignment = 'left'
-newline = true
-
-[[blocks.segments]]
-type = 'path'
-style = 'plain'
-background = 'transparent'
-foreground = 'blue'
-template = '{{ .Path }}'
-
-[blocks.segments.properties]
-style = 'full'
-
-[[blocks.segments]]
-type = 'gcp'
-alignment = 'left'
-style = 'plain'
-template = ' 🍐{{.Project}}-><blue>{{ if eq .Region "us-east1"}}Secundario{{ else }}Primario{{end}}</>->'
-
-[[blocks.segments]]
-type = 'kubectl'
-alignment = 'left'
-style = 'plain'
-template = "<green>☸ {{.Namespace}}</>"
-
-[[blocks.segments]]
-type = 'git'
-style = 'plain'
-foreground = 'p:grey'
-background = 'transparent'
-template = ' {{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }}*{{ end }} <cyan>{{ if gt .Behind 0 }}⇣{{ end }}{{ if gt .Ahead 0 }}⇡{{ end }}</>'
-
-[blocks.segments.properties]
-branch_icon = ''
-commit_icon = '@'
-fetch_status = true
-
-[[blocks.segments]]
-type = "php"
-style = "plain"
-foreground = "#4063D8"
-background = "transparent"
-template = "  {{ .Full }} "
-
-[[blocks.segments]]
-type = "node"
-style = "plain"
-foreground = "#6CA35E"
-background = "transparent"
-template = "  {{ .Full }} "
-
-[[blocks.segments]]
-type = "go"
-style = "plain"
-foreground = "#7FD5EA"
-background = "transparent"
-template = " ‭🦫 {{ .Full }} "
-
-[[blocks]]
-type = 'rprompt'
-overflow = 'hidden'
-
-[[blocks.segments]]
-type = 'executiontime'
-style = 'plain'
-foreground = 'yellow'
-background = 'transparent'
-template = '{{ .FormattedMs }}'
-
-[blocks.segments.properties]
-threshold = 5000
-
-[[blocks]]
-type = 'prompt'
-alignment = 'left'
-newline = true
-
-[[blocks.segments]]
-type = 'text'
-style = 'plain'
-foreground_templates = [
-    "{{if gt .Code 0}}red{{end}}",
-    "{{if eq .Code 0}}magenta{{end}}",
-]
-background = 'transparent'
-template = '❯'
-
-[transient_prompt]
-foreground_templates = [
-    "{{if gt .Code 0}}red{{end}}",
-    "{{if eq .Code 0}}magenta{{end}}",
-]
-background = 'transparent'
-template = '❯ '
+version = 3
+final_space = true
 
 [secondary_prompt]
-foreground = 'magenta'
-background = 'transparent'
-template = '❯❯ '
+  template = '❯❯ '
+  foreground = 'magenta'
+  background = 'transparent'
+
+[transient_prompt]
+  template = '❯ '
+  foreground = ''
+  background = 'transparent'
+  foreground_templates = ['{{if gt .Code 0}}red{{end}}', '{{if eq .Code 0}}magenta{{end}}']
+
+[[blocks]]
+  type = 'prompt'
+  alignment = 'left'
+  newline = true
+
+  [[blocks.segments]]
+    style = 'plain'
+    template = '{{ .Path }}'
+    foreground = 'blue'
+    background = 'transparent'
+    type = 'path'
+
+    [blocks.segments.properties]
+      style = 'full'
+
+  [[blocks.segments]]
+    style = 'plain'
+    template = ' 🍐{{.Project}}-><blue>{{ if eq .Region "us-east1"}}Secundario{{ else }}Primario{{end}}</>->'
+    foreground = ''
+    background = ''
+    type = 'gcp'
+
+  [[blocks.segments]]
+    style = 'plain'
+    template = '<green>☸ {{.Namespace}}</>'
+    foreground = ''
+    background = ''
+    type = 'kubectl'
+
+  [[blocks.segments]]
+    style = 'plain'
+    template = ' {{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }}*{{ end }} <cyan>{{ if gt .Behind 0 }}⇣{{ end }}{{ if gt .Ahead 0 }}⇡{{ end }}</>'
+    foreground = 'p:grey'
+    background = 'transparent'
+    type = 'git'
+
+    [blocks.segments.properties]
+      branch_icon = ''
+      commit_icon = '@'
+      fetch_status = true
+
+  [[blocks.segments]]
+    style = 'plain'
+    template = '  {{ .Full }} '
+    foreground = '#4063D8'
+    background = 'transparent'
+    type = 'php'
+
+  [[blocks.segments]]
+    style = 'plain'
+    template = '  {{ .Full }} '
+    foreground = '#6CA35E'
+    background = 'transparent'
+    type = 'node'
+
+  [[blocks.segments]]
+    style = 'plain'
+    template = ' ‭🦫 {{ .Full }} '
+    foreground = '#7FD5EA'
+    background = 'transparent'
+    type = 'go'
+
+[[blocks]]
+  type = 'rprompt'
+  overflow = 'hidden'
+
+  [[blocks.segments]]
+    style = 'plain'
+    template = '{{ .FormattedMs }}'
+    foreground = 'yellow'
+    background = 'transparent'
+    type = 'executiontime'
+
+    [blocks.segments.properties]
+      threshold = 5000
+
+[[blocks]]
+  type = 'prompt'
+  alignment = 'left'
+  newline = true
+
+  [[blocks.segments]]
+    style = 'plain'
+    template = '❯'
+    foreground = ''
+    background = 'transparent'
+    type = 'text'
+    foreground_templates = ['{{if gt .Code 0}}red{{end}}', '{{if eq .Code 0}}magenta{{end}}']

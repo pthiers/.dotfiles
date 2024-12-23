@@ -3,6 +3,10 @@ if [[ -f "/opt/homebrew/bin/brew" ]] then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
+if [[ -d "${HOME}/.config/composer/vendor/bin" ]] then
+    export PATH=$PATH:${HOME}/.config/composer/vendor/bin
+fi
+
 # Setear home de ZINIT
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 #Descargar si no existe zinit
@@ -24,6 +28,8 @@ zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
 
+zinit light zsh-users/zsh-history-substring-search
+#zinit ice wait atload'_history_substring_search_config'
 # Add in snippets
 zinit snippet OMZL::git.zsh
 zinit snippet OMZP::git
@@ -48,6 +54,7 @@ HISTSIZE=10000
 HISTFILE=~/.zsh_history
 SAVEHIST=$HISTSIZE
 HISTDUP=erase
+HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
 setopt appendhistory
 setopt sharehistory
 setopt hist_ignore_space
@@ -56,6 +63,11 @@ setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
 
+bindkey '^[[A' history-substring-search-up # or '\eOA'
+bindkey '^[[B' history-substring-search-down # or '\eOB'
+
+export USE_GKE_GCLOUD_AUTH_PLUGIN=True
+export CLOUDSDK_PYTHON_SITEPACKAGES=1
 
 # Completion styling
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
