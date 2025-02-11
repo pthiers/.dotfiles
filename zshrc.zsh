@@ -20,7 +20,7 @@ source "${ZINIT_HOME}/zinit.zsh"
 source "${HOME}/.dotfiles/alias.zsh"
 
 #Si existe, cargamos las config de riskamerica
-[[ -s "${HOME}/.dotfiles/riskamerica.zsh" ]] source "${HOME}/.dotfiles/riskamerica.zsh"
+[[ -s "${HOME}/.dotfiles/riskamerica.zsh" ]] && source "${HOME}/.dotfiles/riskamerica.zsh"
 
 
 # Add in zsh plugins
