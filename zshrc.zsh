@@ -17,9 +17,10 @@ fi
 
 #Levantar zinit
 source "${ZINIT_HOME}/zinit.zsh"
-
 source "${HOME}/.dotfiles/alias.zsh"
-source "${HOME}/.dotfiles/riskamerica.zsh"
+
+#Si existe, cargamos las config de riskamerica
+[[ -s "${HOME}/.dotfiles/riskamerica.zsh" ]] source "${HOME}/.dotfiles/riskamerica.zsh"
 
 
 # Add in zsh plugins
@@ -80,3 +81,6 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 # Shell integrations
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
+
+# Golang version manager
+[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
