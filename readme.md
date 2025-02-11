@@ -1,6 +1,20 @@
 # dotfiles
 
-Cambiar el .zshrc por esto:
+## Paquetes a instalar
+
+### Linux
+
+```
+paru -Sy fzf zoxide xclip oh-my-posh-bin
+```
+
+### Mac
+
+TODO
+
+
+
+## Cambiar el .zshrc por esto:
 
 ```
 source "${HOME}/.dotfiles/zshrc.zsh"
