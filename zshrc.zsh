@@ -28,7 +28,7 @@ zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
-
+zinit light empresslabs/laravel.plugin.zsh
 zinit light zsh-users/zsh-history-substring-search
 #zinit ice wait atload'_history_substring_search_config'
 # Add in snippets
