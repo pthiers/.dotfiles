@@ -25,3 +25,8 @@ export PYENV_ROOT="$HOME/.pyenv"
 eval "$(pyenv init -)"
 export CLOUDSDK_PYTHON=$(which python3)
 ```
+
+## Agregar la configuracion de beets
+```
+ ln -s beets.yaml ~/.config/beets/config.yaml
+```
