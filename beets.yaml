@@ -1,0 +1,34 @@
+# Carpeta principal de destino para tu colección organizada
+directory: /cache/Music
+
+# Plugins útiles para embellecer tu colección
+plugins: fetchart inline embedart zero scrub
+
+# Numeración por disco (para multidiscos)
+per_disc_numbering: yes
+
+# Configuración de importación
+import:
+  move: yes # Mueve los archivos (no los copia)
+  copy: no # No queremos duplicados
+  write: yes # Escribe las etiquetas en los archivos
+  resume: ask # Pregunta si retomar importaciones previas
+  autotag: yes # Habilita autoetiquetado
+  quiet: no # Muestra información durante la importación
+
+# Campos personalizados para saber si hay más de un disco
+item_fields:
+  multidisc: 1 if disctotal > 1 else 0
+
+# Estructura de carpetas
+paths:
+  default: $albumartist/($year) $album/%if{$multidisc,$disc-}$track $title
+
+  # Para canciones sueltas (sin álbum)
+  singleton: Non-Album/$artist/($year)-$title
+
+  # Para compilaciones, usando el albumartist como organizador
+  comp: $albumartist/($year) $album/%if{$multidisc,$disc-}$track-$title
+
+# Convierte caracteres raros (ej. acentos, símbolos) a ASCII donde se pueda
+asciify_paths: yes
