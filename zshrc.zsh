@@ -67,6 +67,8 @@ setopt hist_find_no_dups
 bindkey '^[[A' history-substring-search-up # or '\eOA'
 bindkey '^[[B' history-substring-search-down # or '\eOB'
 bindkey "^[[3~" delete-char
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
 
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 export CLOUDSDK_PYTHON_SITEPACKAGES=1
@@ -78,6 +80,9 @@ zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
+
+# FIX GHOSTTY
+export TERM=xterm-256color
 
 # Shell integrations
 eval "$(fzf --zsh)"
