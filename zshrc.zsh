@@ -28,7 +28,7 @@ zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
-
+zinit light empresslabs/laravel.plugin.zsh
 zinit light zsh-users/zsh-history-substring-search
 #zinit ice wait atload'_history_substring_search_config'
 # Add in snippets
@@ -66,6 +66,7 @@ setopt hist_find_no_dups
 
 bindkey '^[[A' history-substring-search-up # or '\eOA'
 bindkey '^[[B' history-substring-search-down # or '\eOB'
+bindkey "^[[3~" delete-char
 
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 export CLOUDSDK_PYTHON_SITEPACKAGES=1
