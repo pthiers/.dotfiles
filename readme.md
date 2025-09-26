@@ -30,3 +30,8 @@ export CLOUDSDK_PYTHON=$(which python3)
 ```
  ln -s beets.yaml ~/.config/beets/config.yaml
 ```
+
+## neovim
+```
+ln -s ~/.dotenv/nvim ~/.config/nvim
+```
