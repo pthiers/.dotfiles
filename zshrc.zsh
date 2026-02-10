@@ -80,6 +80,18 @@ zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
+export PATH=$PATH:"$HOME/.local/bin"
+
+pod_xlsx_cp () {
+  local pod="$1"
+
+  kubectl exec "$pod" -- sh -c '
+    ls /tmp/*.xlsx 2>/dev/null
+  ' | while read -r file; do
+    kubectl cp "$pod:$file" .
+  done
+}
+
 
 # FIX GHOSTTY
 export TERM=xterm-256color
