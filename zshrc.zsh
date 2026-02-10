@@ -86,11 +86,13 @@ pod_xlsx_cp () {
   local pod="$1"
 
   kubectl exec "$pod" -- sh -c '
-    ls /tmp/*.xlsx 2>/dev/null
-  ' | while read -r file; do
-    kubectl cp "$pod:$file" .
-  done
+    ls /tmp/*.xlsx 2>/dev/null | xargs -n1 basename
+  ' | xargs kubectl exec "$pod" -- \
+    tar czf - -C /tmp \
+  | tar xzf -
 }
+
+
 
 
 # FIX GHOSTTY
